@@ -49,17 +49,17 @@ namespace YiJing
             Console.WriteLine($"The left pile contains {leftPile.Count} stalks");
             Console.WriteLine($"The right pile contains {rightPile.Count} stalks");
 
-            Console.WriteLine("\nOne of the right pile stalks will be taken out and placed between" +
-                "the little finger and index finger of the left hand.");
+            // Take out a random stalk from the left pile, place it between the little finger and index finger of left hand
             int randomRightPileStalkIndex = rand.Next(0, rightPile.Count - 1);
             string randomRightPileStalk = rightPile[randomRightPileStalkIndex];
-            Console.WriteLine($"\n{randomRightPileStalk} was taken out.");
             rightPile.RemoveAt(randomRightPileStalkIndex);
-            Console.WriteLine($"\nThe pile now contains {rightPile.Count} stalks");
+            Console.WriteLine($"\n{randomRightPileStalk} was taken out from the right pile.\nIt has been placed" +
+                $"between the little finger and index finger of the left hand.");
+            Console.WriteLine($"\nThe right pile now contains {rightPile.Count} stalks");
 
             // Distribute the left pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe left pile stalks will now be distributed into piles of 4, until 4 or " +
-                "less stalks remain");
+            Console.WriteLine("The left pile stalks will now be distributed into piles of four, until four or " +
+                "fewer stalks remain");
 
             List<string> leftTablePiles = new List<string>();
             List<string> leftTableLeftovers = new List<string>();
@@ -98,12 +98,12 @@ namespace YiJing
                 leftPile.Clear();
             }
 
-            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of 4, {leftTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of four, {leftTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the ring and middle fingers of the left hand.");
 
             // Distribute the right pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of 4, until 4 or " +
-               "less stalks remain");
+            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of four, until four or " +
+               "fewer stalks remain");
 
             List<string> rightTablePiles = new List<string>();
             List<string> rightTableLeftovers = new List<string>();
@@ -142,8 +142,7 @@ namespace YiJing
                 rightPile.Clear();
             }
 
-
-            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of 4, {rightTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of four, {rightTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the middle and index fingers of the left hand.");
 
             int combinedTableLeftoversFirstRound = leftTableLeftovers.Count + rightTableLeftovers.Count + 1;
@@ -172,8 +171,7 @@ namespace YiJing
             rightTablePiles.Clear();
 
             Console.WriteLine($"\nThe table piles have been collected to a single pile of {yarrowPile.Count} stalks");
-            yarrowPile.ForEach(Console.WriteLine);
-
+            //yarrowPile.ForEach(Console.WriteLine);
 
             // ROUND TWO OF THREE
             Console.WriteLine("\nSECOND ROUND:");
@@ -198,16 +196,15 @@ namespace YiJing
             Console.WriteLine($"\nThe left pile contains {leftPile.Count} stalks");
             Console.WriteLine($"\nThe right pile contains {rightPile.Count} stalks");
 
-            Console.WriteLine("\nOne of the right pile stalks will be taken out and placed between" +
-                "the little finger and index finger of the left hand.");
             randomRightPileStalkIndex = rand.Next(0, rightPile.Count - 1);
             randomRightPileStalk = rightPile[randomRightPileStalkIndex];
-            Console.WriteLine($"\n{randomRightPileStalk} was taken out.");
             rightPile.RemoveAt(randomRightPileStalkIndex);
+            Console.WriteLine($"\n{randomRightPileStalk} was taken out from the right pile.\nIt has been placed" +
+                            $"between the little finger and index finger of the left hand.");
 
-            // Distribute the left pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe left pile stalks will now be distributed into piles of 4, until 4 or " +
-                "less stalks remain");
+            // Distribute the left pile into piles of four, until four or fewer stalks remain
+            Console.WriteLine("\nThe left pile stalks will now be distributed into piles of four, until four or " +
+                "fewer stalks remain");
 
             if (leftPile.Count % 4 == 0)
             {
@@ -244,11 +241,11 @@ namespace YiJing
                 leftPile.Clear();
             }
 
-            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of 4, {leftTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of four, {leftTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the ring and middle fingers of the left hand.");
 
             // Distribute the right pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of 4, until 4 or " +
+            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of four, until four or " +
                "less stalks remain");
 
             if (rightPile.Count % 4 == 0)
@@ -286,13 +283,12 @@ namespace YiJing
                 rightPile.Clear();
             }
 
-            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of 4, {rightTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of four, {rightTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the middle and index fingers of the left hand.");
 
             int combinedTableLeftoversSecondRound = leftTableLeftovers.Count + rightTableLeftovers.Count + 1;
 
-            Console.WriteLine($"\nYour left hand now contains a total of " +
-                $"{combinedTableLeftoversSecondRound} stalks.");
+            Console.WriteLine($"\nYour left hand now contains a total of {combinedTableLeftoversSecondRound} stalks.");
 
             Console.WriteLine($"\nThe {combinedTableLeftoversSecondRound} counted stalks in the left hand " +
                 $"are put aside. The table piles of sets of four stalks are collected and again split into two piles.");
@@ -315,7 +311,7 @@ namespace YiJing
             rightTablePiles.Clear();
 
             Console.WriteLine($"\nThe table piles have been collected to a single pile of {yarrowPile.Count} stalks");
-            yarrowPile.ForEach(Console.WriteLine);
+            //yarrowPile.ForEach(Console.WriteLine);
 
             //ROUND THREE OF THREE
             Console.WriteLine("\nTHIRD ROUND:");
@@ -344,12 +340,13 @@ namespace YiJing
                 "the little finger and index finger of the left hand.");
             randomRightPileStalkIndex = rand.Next(0, rightPile.Count - 1);
             randomRightPileStalk = rightPile[randomRightPileStalkIndex];
-            Console.WriteLine($"\n{randomRightPileStalk} was taken out.");
             rightPile.RemoveAt(randomRightPileStalkIndex);
+            Console.WriteLine($"\n{randomRightPileStalk} was taken out from the right pile.\nIt has been placed" +
+                            $"between the little finger and index finger of the left hand.");
 
             // Distribute the left pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe left pile stalks will now be distributed into piles of 4, until 4 or " +
-                "less stalks remain");
+            Console.WriteLine("\nThe left pile stalks will now be distributed into piles of four, until four or " +
+                "fewer stalks remain");
 
             if (leftPile.Count % 4 == 0)
             {
@@ -386,12 +383,12 @@ namespace YiJing
                 leftPile.Clear();
             }
 
-            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of 4, {leftTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the left pile stalks into piles of four, {leftTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the ring and middle fingers of the left hand.");
 
             // Distribute the right pile into piles of four, until four or less stalks remain
-            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of 4, until 4 or " +
-               "less stalks remain");
+            Console.WriteLine("\nThe right pile stalks will now be distributed into piles of four, until four or " +
+               "fewer stalks remain");
 
             if (rightPile.Count % 4 == 0)
             {
@@ -428,13 +425,12 @@ namespace YiJing
                 rightPile.Clear();
             }
 
-            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of 4, {rightTableLeftovers.Count} " +
+            Console.WriteLine($"\nAfter distributing the right pile stalks into piles of four, {rightTableLeftovers.Count} " +
                 $"stalk(s) remain. These are placed between the middle and index fingers of the left hand.");
 
             int combinedTableLeftoversThirdRound = leftTableLeftovers.Count + rightTableLeftovers.Count + 1;
 
-            Console.WriteLine($"\nYour left hand now contains a total of " +
-                $"{combinedTableLeftoversThirdRound} stalks.");
+            Console.WriteLine($"\nYour left hand now contains a total of {combinedTableLeftoversThirdRound} stalks.");
 
             Console.WriteLine($"\nThe {combinedTableLeftoversThirdRound} counted stalks in the left hand " +
                 $"are put aside. The table piles of sets of four stalks are collected and again split into two piles.");
