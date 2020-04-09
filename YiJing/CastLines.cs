@@ -9,24 +9,70 @@ namespace YiJing
 
         // TODO: ADD COIN TOSS METHOD
 
-        //TODO: RETURN NOT THE LINES, BUT THE NUMBES FOR EACH LINE. CREATE NEW METHOD WHERE NUMBERS FROM THIS CLASS/METHOD
-        //ARE USED TO CREATE HEXAGRAM... MIGHT REQUIRE THAT METHOODS ARE NO LONGER STATIC.
-
 
         public static void printHexagram()
         {
-            Stack<string> lines = yarrowStalks();
+            string[,] lineArray = createHexagram();
+
+            //foreach (var line in lineArray)
+            //{
+            //    Console.WriteLine(line);
+            //}
+
+            for (int i = 0; i < lineArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < lineArray.GetLength(1); j++)
+                {
+                    Console.Write("\t\t" + lineArray[i, j] + "\t\t");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static string[,] createHexagram()
+        {
+            Stack<int> lines = yarrowStalks();
+
+            string yinYangName = "";
+            string symbolLine = "";
+
+            string[,] lineArray = new string[6,2];
+            int i = 0;
 
             foreach (var line in lines)
             {
-                Console.WriteLine(line);
-            }
+                switch (line)
+                {
+                    case 6:
+                        yinYangName = "old yin";
+                        symbolLine = "---x---";
+                        break;
+                    case 8:
+                        yinYangName = "young yin";
+                        symbolLine = "--- ---";
+                        break;
+                    case 9:
+                        yinYangName = "old yang";
+                        symbolLine = "---o---";
+                        break;
+                    case 7:
+                        yinYangName = "young yang";
+                        symbolLine = "-------";
+                        break;
+                }
 
+                lineArray[i, 0] = symbolLine;
+                lineArray[i, 1] = yinYangName;
+                i++;
+            }
+            return lineArray;
         }
-        public static Stack<string> yarrowStalks()
+
+
+        public static Stack<int> yarrowStalks()
         {
             // Use stack so that the first line is at the bottom, the last line at the top, when the hexagram is created.
-            Stack<string> lines = new Stack<string>();
+            Stack<int> lines = new Stack<int>();
 
             for (int line = 0; line < 6; line++)
             {
@@ -468,44 +514,43 @@ namespace YiJing
                 int valueThirdRound = (combinedTableLeftoversThirdRound == 8 ? 2 : 3);
                 int combinedValue = valueFirstRound + valueSecondRound + valueThirdRound;
 
-                string yinYangName = "";
-                string symbolLine = "";
-                switch (combinedValue)
-                {
-                    case 6:
-                        yinYangName = "old yin";
-                        symbolLine = "---x---";
-                        break;
-                    case 8:
-                        yinYangName = "young yin";
-                        symbolLine = "--- ---";
-                        break;
-                    case 9:
-                        yinYangName = "old yang";
-                        symbolLine = "---o---";
-                        break;
-                    case 7:
-                        yinYangName = "young yang";
-                        symbolLine = "-------";
-                        break;
-                }
+                //string yinYangName = "";
+                //string symbolLine = "";
+                //switch (combinedValue)
+                //{
+                //    case 6:
+                //        yinYangName = "old yin";
+                //        symbolLine = "---x---";
+                //        break;
+                //    case 8:
+                //        yinYangName = "young yin";
+                //        symbolLine = "--- ---";
+                //        break;
+                //    case 9:
+                //        yinYangName = "old yang";
+                //        symbolLine = "---o---";
+                //        break;
+                //    case 7:
+                //        yinYangName = "young yang";
+                //        symbolLine = "-------";
+                //        break;
+                //}
 
+                //Console.WriteLine($"FIRST ROUND: {combinedTableLeftoversFirstRound}");
+                //Console.WriteLine($"SECOND ROUND: {combinedTableLeftoversSecondRound}");
+                //Console.WriteLine($"THIRD ROUND: {combinedTableLeftoversThirdRound}");
 
-                Console.WriteLine($"Value of ValueFristRound = {valueFirstRound}");
-                Console.WriteLine($"Value of ValueSecondRound = {valueSecondRound}");
-                Console.WriteLine($"Value of ValueThirdRound = {valueThirdRound}");
+                //Console.WriteLine($"Value of ValueFristRound = {valueFirstRound}");
+                //Console.WriteLine($"Value of ValueSecondRound = {valueSecondRound}");
+                //Console.WriteLine($"Value of ValueThirdRound = {valueThirdRound}");
 
-                Console.WriteLine("\nThe Yin-Yang name and symbol line are:");
-                Console.WriteLine($"\n\t{yinYangName}");
-                Console.WriteLine($"\n\t{symbolLine}");
+                //Console.WriteLine("\nThe Yin-Yang name and symbol line are:");
+                //Console.WriteLine($"\n\t{yinYangName}");
+                //Console.WriteLine($"\n\t{symbolLine}");
 
-                Console.WriteLine("\nSUMMARY OF LEFTOVER STALKS:");
+                //Console.WriteLine("\nSUMMARY OF LEFTOVER STALKS:");
 
-                Console.WriteLine($"FIRST ROUND: {combinedTableLeftoversFirstRound}");
-                Console.WriteLine($"SECOND ROUND: {combinedTableLeftoversSecondRound}");
-                Console.WriteLine($"THIRD ROUND: {combinedTableLeftoversThirdRound}");
-
-                lines.Push(symbolLine);
+                lines.Push(combinedValue);
 
             }
 
